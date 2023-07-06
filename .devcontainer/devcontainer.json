@@ -48,6 +48,16 @@
           "editor.rulers": [ 80, 120 ],
           "editor.tabSize": 2
         },
+        "[html]": {
+          "editor.formatOnSave": true,
+          "editor.formatOnPaste": true,
+          "editor.insertSpaces": false,
+          "editor.linkedEditing": true,
+          "editor.tabSize": 2,
+          "files.insertFinalNewline": true,
+          "files.trimFinalNewlines": true,
+          "files.trimTrailingWhitespace": true
+        },
         "json.format.keepLines": true,
         "[json]": {
           "editor.codeActionsOnSave": {
@@ -84,8 +94,7 @@
         "dbaeumer.vscode-eslint",
         "Angular.ng-template",
         "johnpapa.Angular2",
-        "cyrilletuzi.angular-schematics",
-        "formulahendry.auto-rename-tag"
+        "cyrilletuzi.angular-schematics"
       ]
     }
   }
