@@ -64,4 +64,4 @@ ng serve
 
 Alternatively, you can use `npm start` which calls the same command above.
 
-When running on Codespaces, it is necessary to pass the `--open` (or `-o` for short) option. I recommend editting the `start` script on `package.json` to include that option and using `npm start` to run the project.
+When running on Codespaces, it is necessary to pass the `--host=0.0.0.0` option. I recommend editting the `start` script on `package.json` to include that option and using `npm start` to run the project.
