@@ -3,14 +3,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve --host=0.0.0.0",
+      "name": "ng serve --host=0.0.0.0 --disable-host-check",
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
       "url": "http://localhost:4200/"
     },
     {
-      "name": "ng test --host=0.0.0.0",
+      "name": "ng test --host=0.0.0.0 --disable-host-check",
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: test",

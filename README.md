@@ -65,3 +65,9 @@ ng serve
 Alternatively, you can use `npm start` which calls the same command above.
 
 When running on Codespaces, it is necessary to pass the `--host=0.0.0.0` option. I recommend editting the `start` script on `package.json` to include that option and using `npm start` to run the project.
+
+## Common problems
+
+### webpack-dev-server Invalid Host/Origin header
+
+If webpack keeps complaining about the host configuration, pass the `--disable-host-check` argument to `ng serve` to make it skip that check.
