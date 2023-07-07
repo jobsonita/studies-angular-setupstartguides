@@ -14,6 +14,56 @@ https://angular.io/guide/architecture
 
 ### Components
 
+#### Routing
+
+A router is a module that decides which Component to render on certain outlets by matching against url paths. Read more about it at https://angular.io/guide/router
+
+In this project, [`src/app/app.module.ts`](src/app/app.module.ts) creates a router module by using the [`RouterModule.forRoot()`](https://angular.io/start/start-routing#associate-a-url-path-with-a-component) function with instructions on how to handle our routes:
+
+```typescript
+@NgModule({
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+      { path: '', component: ProductListComponent },
+      { path: 'products/:productId', component: ProductDetailsComponent },
+    ])
+  ],
+  declarations: [
+    AppComponent,
+    TopBarComponent,
+    ProductListComponent,
+    ProductAlertsComponent,
+    ProductDetailsComponent,
+  ],
+  bootstrap: [
+    AppComponent
+  ]
+})
+export class AppModule { }
+```
+
+And `src/app/app.component.html` defines the [`RouterOutlet`](https://angular.io/api/router/RouterOutlet) where our content will be rendered:
+
+```html
+<app-top-bar></app-top-bar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+```
+
+Once a router is configured to handle the url paths of our site, we can use the [`RouterLink`](https://angular.io/api/router/RouterLink) directive in our anchor tags to generate the correct urls to reach each of our pages:
+
+```html
+<a
+  [title]="product.name + ' details'"
+  [routerLink]="['/products', product.id]">
+  {{ product.name }}
+</a>
+```
+
 ### Templates
 
 #### Structural Directives
