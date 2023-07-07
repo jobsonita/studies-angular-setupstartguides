@@ -3,6 +3,21 @@
 Angular Setup Guide: https://angular.io/guide/setup-local  
 Angular Start Guide: https://angular.io/start
 
+## Angular structure
+
+Basic: Components, Templates, Dependency Injection  
+https://angular.io/guide/what-is-angular
+
+In Depth: Modules, Components, Directives, Text Interpolation, Data Binding, Pipes, Services, Routing, Dependency Injection, and more...  
+https://angular.io/guide/understanding-angular-overview  
+https://angular.io/guide/architecture
+
+### Components
+
+### Templates
+
+### Dependency Injection
+
 ## Checking NPM and Node installation
 
 Run the following commands on the terminal to see whether NPM and Node are installed:
