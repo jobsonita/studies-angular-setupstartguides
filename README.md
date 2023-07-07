@@ -117,6 +117,42 @@ Binding to keyboard events:
 
 > **Note**: each OS handles key codes in different ways, so make sure to check this link before using them: https://angular.io/guide/event-binding#binding-to-keyboard-events
 
+#### Parent and Children Communication
+
+https://angular.io/guide/component-interaction
+
+##### [@Input](https://angular.io/api/core/Input)
+
+##### [@Output](https://angular.io/api/core/Output)
+
+#####  [EventEmitter](https://angular.io/api/core/EventEmitter)
+
+```typescript
+export class ProductAlertsComponent {
+  @Input() product: Product | undefined;
+  @Output() notify = new EventEmitter();
+}
+```
+
+```html
+<!-- product-alerts.component.html -->
+<button type="button" (click)="notify.emit()">Notify Me</button>
+```
+
+```html
+<!-- product-list.component.html -->
+<app-product-alerts [product]="product" (notify)="onNotify()" />
+```
+
+```typescript
+export class ProductListComponent {
+  products = [...products];
+  onNotify() {
+    window.alert('You will be notified when the product goes on sale');
+  }
+}
+```
+
 ### Dependency Injection
 
 ## Checking NPM and Node installation
