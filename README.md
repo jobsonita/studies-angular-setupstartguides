@@ -16,6 +16,107 @@ https://angular.io/guide/architecture
 
 ### Templates
 
+#### Structural Directives
+
+##### [NgFor](https://angular.io/api/common/NgFor)
+
+```html
+<p *ngFor="let item of list">
+  This paragraph will be replicated as many times as the number of items in list.
+</p>
+```
+
+Behind the scenes:
+
+```html
+<ng-template ngFor let-item [ngForOf]="list">
+  <p>This paragraph will be replicated as many times as the number of items in list.</p>
+</ng-template>
+```
+
+> **Note**: NgFor passes other received attributes down to its children
+
+> **Note**: NgFor has various local variables that can be used as described at https://angular.io/api/common/NgFor#local-variables
+
+##### [NgIf](https://angular.io/api/common/NgIf)
+
+```html
+<p *ngIf="condition">
+  This will be displayed when condition is true.
+</p>
+```
+
+Behind the scenes:
+
+```html
+<ng-template [ngIf]="condition">
+  <p>This will be displayed when condition is true.</p>
+</ng-template>
+```
+
+If-else:
+
+```html
+<p *ngIf="condition; else elseBlock">This will be displayed when condition is true.</p>
+<ng-template #elseBlock>This will be displayed when condition is false.</ng-template>
+```
+
+Waiting for asynchronous data:
+
+```html
+<button (click)="nextUser()">Next User</button>
+
+<div *ngIf="userObservable | async as user; else loading">
+  Hello {{user.last}}, {{user.first}}!
+</div>
+<ng-template #loading let-user>Waiting... (user is {{user|json}})
+```
+
+```typescript
+userObservable = new Subject<{first: string, last: string}>();
+first = ['John', 'Mike', 'Mary', 'Bob'];
+firstIndex = 0;
+last = ['Smith', 'Novotny', 'Angular'];
+lastIndex = 0;
+
+nextUser() {
+  let first = this.first[this.firstIndex++];
+  if (this.firstIndex >= this.first.length) this.firstIndex = 0;
+  let last = this.last[this.lastIndex++];
+  if (this.lastIndex >= this.last.length) this.lastIndex = 0;
+  this.userObservable.next({first, last});
+}
+```
+
+#### Data Binding
+
+##### [Text Interpolation](https://angular.io/guide/interpolation)
+
+```html
+<p>{{title}}</p>
+<div><img alt="item.description" src="{{item.imageUrl}}"></div>
+```
+
+##### [Property Binding](https://angular.io/guide/property-binding)
+
+```html
+<img alt="The image description is static" [src]="aBoundImageUrlThatIsDynamic">
+```
+
+##### [Event Binding](https://angular.io/guide/event-binding)
+
+```html
+<button (click)="onSave()">Save</button>
+```
+
+Binding to keyboard events:
+
+```html
+<input (keydown.shift.t)="onKeydown($event)" />
+```
+
+> **Note**: each OS handles key codes in different ways, so make sure to check this link before using them: https://angular.io/guide/event-binding#binding-to-keyboard-events
+
 ### Dependency Injection
 
 ## Checking NPM and Node installation
