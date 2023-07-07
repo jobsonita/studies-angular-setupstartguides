@@ -222,7 +222,7 @@ When running on Codespaces, it is necessary to pass the `--host=0.0.0.0` option.
 
 To create a new component, use the following command:
 
-> ng generate component <component-name>
+> ng generate component `<component-name>`
 
 In this project, we create the component `product-alerts`, that goes into the `src/app/product-alerts` folder. Angular automatically creates the folder and its files, and also updates `app.module.ts` to include our component in its declarations list.
 
