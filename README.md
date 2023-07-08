@@ -487,6 +487,44 @@ export class MyService {
 }
 ```
 
+### FormBuilder and ReactiveFormsModule
+
+#### [ReactiveFormsModule](https://angular.io/api/forms/ReactiveFormsModule)
+
+```typescript
+import { ReactiveFormsModule } from '@angular/forms';
+/**/
+@NgModule({
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    /*...*/
+  ],
+  /*...*/
+})
+export class AppModule { }
+```
+
+#### [FormBuilder](https://angular.io/api/forms/FormBuilder)
+
+```typescript
+import { FormBuilder } from '@angular/forms';
+/*...*/
+export class MyComponent {
+  myForm = this.formBuilder.group({
+    field1: '',
+    field2: '',
+  });
+
+  constructor(private formBuilder: FormBuilder) { }
+
+  onSubmit(): void {
+    console.warn('These were the values of your form fields:', this.checkoutForm.value);
+    this.checkoutForm.reset();
+  }
+}
+```
+
 ## Common problems
 
 ### webpack-dev-server Invalid Host/Origin header
