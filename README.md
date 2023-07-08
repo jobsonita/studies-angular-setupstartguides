@@ -254,6 +254,40 @@ Example of Brazilian Real output with 4 integer digits and min of 2 fractional a
 
 If you run into problems using a locale, refer to the [locale related errors](#locale-related-errors) section down below.
 
+#### [Async](https://angular.io/api/common/AsyncPipe)
+
+```html
+<button (click)="updateObservableList()">Refresh</button>
+
+<div *ngFor="let item of observableList | async">
+  <span>{{ item.description }}</span>
+</div>
+```
+
+```typescript
+import { Observable } from 'rxjs'
+
+interface Item {
+  description: string;
+}
+
+export class MyComponent implements OnInit {
+  observableList!: Observable<Item[]>;
+
+  constructor(private someService: SomeService) { }
+
+  ngOnInit(): void {
+    // retrieves the list when the component first shows up
+    this.observableList = this.someService.getObservableList();
+  }
+
+  updateObservableList() {
+    // used to refresh the list when we press the refresh button
+    this.observableList = this.someService.getObservableList();
+  }
+}
+```
+
 ### Services
 
 A service is any value, function or feature that we can make available to any part of our application through Angular's dependency injection system. Read more at https://angular.io/guide/architecture-services
