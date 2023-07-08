@@ -505,22 +505,36 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class AppModule { }
 ```
 
+**What it does:**
+
+For every form element in our templates, it includes a `formGroup` Input and a `ngSubmit` Output. We bind the formGroup to an object created by `FormBuilder.group()` that handles our form inputs (can also perform validation), and we bind ngSubmit to a function that will handle the submit event. We also need to set the [`formControlName`](https://angular.io/api/forms/FormControlName) attribute of our inputs to the respective field names in our formGroup, so that formGroup can identify which input it needs to control.
+
+Alternatively, we can work with [FormControls](https://angular.io/api/forms/FormControl) instead, which is potentially more verbose, but gives much more flexibility and extensibility.
+
+```html
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <input formControlName="username" placeholder="Insert your username" />
+  <input formControlName="password" type="password" placeholder="Insert your password" />
+  <button type="submit">Login</button>
+</form>
+```
+
 #### [FormBuilder](https://angular.io/api/forms/FormBuilder)
 
 ```typescript
 import { FormBuilder } from '@angular/forms';
 /*...*/
 export class MyComponent {
-  myForm = this.formBuilder.group({
-    field1: '',
-    field2: '',
+  loginForm = this.formBuilder.group({
+    username: '',
+    password: '',
   });
 
   constructor(private formBuilder: FormBuilder) { }
 
   onSubmit(): void {
-    console.warn('These were the values of your form fields:', this.checkoutForm.value);
-    this.checkoutForm.reset();
+    console.warn('These were the values of your form fields:', this.loginForm.value);
+    this.loginForm.reset();
   }
 }
 ```
