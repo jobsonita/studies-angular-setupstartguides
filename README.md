@@ -64,6 +64,38 @@ Once a router is configured to handle the url paths of our site, we can use the 
 </a>
 ```
 
+And when we navigate to the specified link, we can use the [`ActivatedRoute`](https://angular.io/api/router/ActivatedRoute) service to retrieve information about the [current route snapshot](https://angular.io/api/router/ActivatedRouteSnapshot):
+
+```js
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { Product, products } from '../products';
+
+@Component({
+  selector: 'app-product-details',
+  templateUrl: './product-details.component.html',
+  styleUrls: ['./product-details.component.css']
+})
+export class ProductDetailsComponent implements OnInit {
+
+  product: Product | undefined;
+
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    // First get the product id from the current route.
+    const routeParams = this.route.snapshot.paramMap;
+    const productIdFromRoute = Number(routeParams.get('productId'));
+
+    // Find the product that correspond with the id provided in route.
+    this.product = products.find(product => product.id === productIdFromRoute);
+  }
+
+}
+
+```
+
 ### Templates
 
 #### Structural Directives
@@ -203,6 +235,25 @@ export class ProductListComponent {
 }
 ```
 
+### Pipes
+
+https://angular.io/guide/pipes
+
+#### [Currency](https://angular.io/api/common/CurrencyPipe)
+
+```html
+<span>{{ product.price | currency }}</span>
+```
+
+Example of Brazilian Real output with 4 integer digits and min of 2 fractional and max of 2 fractional digits in pt-br locale:
+
+```html
+<!--output 'R$ 1.234,56' -->
+<span>{{ '1234.56' | currency:'BRL':'symbol':'4.2-2':'pt-BR'}}</span>
+```
+
+If you run into problems using a locale, refer to the [locale related errors](#locale-related-errors) section down below.
+
 ### Dependency Injection
 
 ## Checking NPM and Node installation
@@ -285,3 +336,25 @@ ng generate component product-alerts
 ### webpack-dev-server Invalid Host/Origin header
 
 If webpack keeps complaining about the host configuration, pass the `--disable-host-check` argument to `ng serve` to make it skip that check.
+
+### Locale-related errors
+
+Before using locales other than en-US, we need to configure our app by either setting its default locale or importing and registering them in our app. Here's the import version:
+
+```typescript
+import { registerLocaleData } from '@angular/common';
+import { LOCALE_ID, NgModule } from '@angular/core';
+...
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt);
+
+@NgModule({
+  ...
+  providers: [
+    {provide: LOCALE_ID, useValue: 'pt-BR' }
+  ],
+  ...
+})
+export class AppModule { }
+```
