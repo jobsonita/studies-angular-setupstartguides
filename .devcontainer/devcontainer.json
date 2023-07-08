@@ -30,6 +30,13 @@
         "git.autofetch": true,
         "git.confirmSync": false,
         "material-icon-theme.activeIconPack": "nest",
+        "material-icon-theme.files.associations": {
+          "*.component.ts": "angular-component",
+          "*.directive.ts": "angular-directive",
+          "*.module.ts": "angular",
+          "*.pipe.ts": "angular-pipe",
+          "*.service.ts": "angular-service"
+        },
         "material-icon-theme.languages.associations": {
           "dotenv": "tune"
         },
