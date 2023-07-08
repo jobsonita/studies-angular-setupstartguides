@@ -254,7 +254,82 @@ Example of Brazilian Real output with 4 integer digits and min of 2 fractional a
 
 If you run into problems using a locale, refer to the [locale related errors](#locale-related-errors) section down below.
 
+### Services
+
+A service is an instance of a class that we can make available to any part of our application through Angular's dependency injection system.
+
+Global service (available to any part of our app):
+
+```typescript
+import { Product } from './products';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CartService {
+  items: Product[] = [];
+
+  addToCart(product: Product) {
+    this.items.push(product);
+  }
+
+  getItems() {
+    return this.items;
+  }
+
+  clearCart() {
+    this.items = [];
+    return this.items;
+  }
+}
+```
+
+Using our global service:
+
+```typescript
+/* ... */
+import { Product, products } from '../products';
+import { CartService } from '../cart.service';
+
+export class ProductDetailsComponent implements OnInit {
+  /* ... */
+  constructor(
+    private route: ActivatedRoute,
+    private cartService: CartService
+  ) { }
+  /* ... */
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+    window.alert('Your product has been added to the cart!');
+  }
+}
+```
+
+```html
+<h2>Product Details</h2>
+
+<div *ngIf="product">
+  <h3>{{ product.name }}</h3>
+  <h4>{{ product.price | currency }}</h4>
+  <p>{{ product.description }}</p>
+  <button type="button" (click)="addToCart(product)">Buy</button>
+</div>
+```
+
 ### Dependency Injection
+
+A mechanism through which parts of our app (dependencies) are provided to other parts of our app that require them. Read more at https://angular.io/guide/dependency-injection
+
+#### [Injector](https://angular.io/guide/glossary#injector)
+
+#### [Injectable](https://angular.io/guide/glossary#injectable)
+
+@Injectable annotation: https://angular.io/api/core/Injectable
+
+#### [Provider](https://angular.io/guide/glossary#provider)
+
+#### [DI Token](https://angular.io/guide/glossary#di-token)
 
 ## Checking NPM and Node installation
 
@@ -325,10 +400,22 @@ To create a new component, use the following command:
 
 > ng generate component <component_name>
 
-In this project, we create the component `product-alerts`, that goes into the `src/app/product-alerts` folder. Angular automatically creates the folder and its files, and also updates `app.module.ts` to include our component in its declarations list.
+In this project, we create the component `product-alerts` that goes into the `src/app/product-alerts` folder. Angular automatically creates the folder and its files, and also updates `app.module.ts` to include our component in its declarations list.
 
 ```bash
 ng generate component product-alerts
+```
+
+## Creating a Service
+
+To create a new service, use the following command:
+
+> ng generate service <service_name>
+
+In this project, we create the service `CartService` that goes into the `src/app/cart-service.ts` file.
+
+```bash
+ng generate service cart
 ```
 
 ## Common problems
