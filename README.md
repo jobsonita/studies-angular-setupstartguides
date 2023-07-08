@@ -16,7 +16,9 @@ https://angular.io/guide/architecture
 
 https://angular.io/guide/component-overview
 
-#### Routing
+Jump ahead to [Creating a Component](#creating-a-component) for more information on components.
+
+### Routing
 
 A router is a module that decides which Component to render on certain outlets by matching against url paths. Read more about it at https://angular.io/guide/router
 
