@@ -418,6 +418,41 @@ In this project, we create the service `CartService` that goes into the `src/app
 ng generate service cart
 ```
 
+## Special Modules and Services
+
+### HttpClient and HttpClientModule
+
+#### [HttpClientModule](https://angular.io/api/common/http/HttpClientModule)
+
+```typescript
+import { HttpClientModule } from '@angular/common/http';
+/*...*/
+@NgModule({
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    /*...*/
+  ],
+  /*...*/
+})
+export class AppModule { }
+```
+
+#### [HttpClient](https://angular.io/api/common/http/HttpClient)
+
+```typescript
+import { HttpClient } from '@angular/common/http';
+/*...*/
+export class MyService {
+  /*...*/
+  constructor(private http: HttpClient) {}
+  /*...*/
+  getDataFromTheInternet() {
+    return this.http.get<DataType[]>(myurl);
+  }
+}
+```
+
 ## Common problems
 
 ### webpack-dev-server Invalid Host/Origin header
