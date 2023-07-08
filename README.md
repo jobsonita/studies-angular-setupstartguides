@@ -256,7 +256,7 @@ If you run into problems using a locale, refer to the [locale related errors](#l
 
 ### Services
 
-A service is an instance of a class that we can make available to any part of our application through Angular's dependency injection system.
+A service is any value, function or feature that we can make available to any part of our application through Angular's dependency injection system. Read more at https://angular.io/guide/architecture-services
 
 Global service (available to any part of our app):
 
