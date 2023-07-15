@@ -122,9 +122,9 @@ Nos bastidores:
 </ng-template>
 ```
 
-> **Note**: NgFor repassa os demais atributos recebidos para seu elemento filho
+> **Observação**: NgFor repassa os demais atributos recebidos para seu elemento filho
 
-> **Note**: NgFor possui diversas variáveis locais que podem ser utilizadas conforme descrito em https://angular.io/api/common/NgFor#local-variables
+> **Observação**: NgFor possui diversas variáveis locais que podem ser utilizadas conforme descrito em https://angular.io/api/common/NgFor#local-variables
 
 ##### [NgIf](https://angular.io/api/common/NgIf)
 
@@ -203,7 +203,7 @@ Ligando-se a eventos do teclado:
 <input (keydown.shift.t)="onKeydown($event)" />
 ```
 
-> **Note**: cada sistema operacional lida com códigos de tecla de modos diferentes, então certifique-se de checar esta página antes de usá-los: https://angular.io/guide/event-binding#binding-to-keyboard-events
+> **Observação**: cada sistema operacional lida com códigos de tecla de modos diferentes, então certifique-se de checar esta página antes de usá-los: https://angular.io/guide/event-binding#binding-to-keyboard-events
 
 #### Comunicação entre Elemento Pai e Filhos
 
