@@ -3,7 +3,7 @@
 # studies-angular-setupstartguides
 
 Guia de Configuração do Angular: https://angular.io/guide/setup-local  
-Angular Start Guide: https://angular.io/start
+Guia de Iniciação no Angular: https://angular.io/start
 
 ## Estrutura do Angular
 
