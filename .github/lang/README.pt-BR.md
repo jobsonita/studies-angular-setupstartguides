@@ -414,7 +414,7 @@ ng new SetupAndStartGuides --directory .
 
 O projeto recém criado tem vários arquivos. Os detalhes dessa estrutura são explicados em https://angular.io/guide/file-structure#workspace-configuration-files e https://angular.io/guide/file-structure#application-project-files
 
-## Compartilhando o projeto atual com outros desenvolvedores
+## Compartilhando este projeto com outros desenvolvedores
 
 Em outra máquina, após clonar o projeto, instale as dependências executando o seguinte comando:
 
