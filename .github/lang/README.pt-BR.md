@@ -487,7 +487,7 @@ export class MyService {
   /*...*/
   constructor(private http: HttpClient) {}
   /*...*/
-  getDataFromTheInternet() {
+  obterDadosDaRede() {
     return this.http.get<DataType[]>(myurl);
   }
 }
