@@ -1,4 +1,4 @@
-[Read this file in English](README.md)
+[Read this file in English](../../README.md)
 
 # studies-angular-setupstartguides
 
