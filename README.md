@@ -1,3 +1,5 @@
+[Leia este arquivo em Português](./.github/lang/README.pt-BR.md)
+
 # studies-angular-setupstartguides
 
 Angular Setup Guide: https://angular.io/guide/setup-local  
